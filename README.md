@@ -1,6 +1,6 @@
-# postcss-color-golf
+# postcss-color-golf [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-> "the code golfer’s color minifier for CSS!"
+> ## _"the code golfer’s color minifier for CSS!"_
 
 [![npm version](https://img.shields.io/npm/v/postcss-color-golf.svg)](https://www.npmjs.com/package/postcss-color-golf)
 
