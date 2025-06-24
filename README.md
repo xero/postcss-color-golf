@@ -1,14 +1,19 @@
 # postcss-color-golf [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
-> ## _"the code golfer’s color minifier for CSS!"_
+> _the code golfer’s color minifier for CSS!_
 
 [![npm version](https://img.shields.io/npm/v/postcss-color-golf.svg)](https://www.npmjs.com/package/postcss-color-golf)
+[![Types Included](https://img.shields.io/badge/types-included-blue.svg)](./dist/index.d.ts)
+[![PostCSS plugin](https://img.shields.io/badge/postcss-plugin-blue.svg?logo=postcss)](https://github.com/postcss/postcss)
+[![License: CC0-1.0](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](LICENSE)
+[![npm downloads](https://img.shields.io/npm/dm/postcss-color-golf.svg)](https://www.npmjs.com/package/postcss-color-golf)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/postcss-color-golf)](https://bundlephobia.com/result?p=postcss-color-golf)
 
 A **PostCSS plugin** that aggressively minifies CSS color values:
-- Shortens hex codes (e.g. `#aabbcc` → `#abc`)
+- Shortens hex codes (`#aabbcc` → `#abc`)
 - Converts `rgb()`/`rgba()` to hex when shorter
 - Replaces color names with their shortest possible equivalent
-- Designed for those who want the absolute smallest CSS output—especially for code golf!
+- Designed for the most compact CSS output—perfect for code golf!
 
 ---
 
@@ -22,7 +27,7 @@ npm install postcss-color-golf --save-dev
 
 ## Usage
 
-Add `postcss-color-golf` to your PostCSS plugins:
+### ESM (Node ≥ 12+, modern bundlers, most setups)
 
 ```js
 import postcss from "postcss";
@@ -35,24 +40,38 @@ postcss([
 });
 ```
 
-### With postcss.config.js
+### CommonJS (require)
+
+> **No `.default` needed!**
+> The dual build makes this work as expected.
 
 ```js
-export default {
-  plugins: [
-    require("postcss-color-golf").default()
-  ]
-}
+const postcss = require("postcss");
+const postcssColorGolf = require("postcss-color-golf");
+
+postcss([
+  postcssColorGolf()
+]).process(YOUR_CSS).then(result => {
+  console.log(result.css);
+});
 ```
-**Note:** If you are using CommonJS (`require`), use `.default()` as shown above due to ES module export.
 
----
+### postcss.config.js
 
-## TypeScript Usage
+```js
+module.exports = {
+  plugins: [
+    require("postcss-color-golf")()
+    // ...other plugins
+  ]
+};
+```
 
-Type definitions are included!
+### TypeScript
 
-```typescript
+Type definitions are included for a great developer experience:
+
+```ts
 import postcss from "postcss";
 import postcssColorGolf from "postcss-color-golf";
 
@@ -77,10 +96,9 @@ postcss([postcssColorGolf()]).process(cssString).then(result => {
 
 ---
 
-## Examples
+## Example
 
-### Input
-
+**Input:**
 ```css
 a {
   color: rgb(255,0,0);
@@ -90,14 +108,13 @@ a {
 }
 ```
 
-### Output
-
+**Output:**
 ```css
 a {
-  color: #f00;
-  background: #f0f8ff;
-  border: 1px solid #abc;
-  box-shadow: 0 0 3px #0f080;
+  color:#f00;
+  background:#f0f8ff;
+  border:1px solid #abc;
+  box-shadow:0 0 3px #0f080;
 }
 ```
 
@@ -107,6 +124,8 @@ a {
 
 Currently, there are no options—just plug it in and go!
 Future versions may add configuration for specific minification strategies.
+
+---
 
 ## License
 

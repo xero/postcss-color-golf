@@ -1,16 +1,28 @@
 {
   "name": "postcss-color-golf",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "PostCSS plugin that aggressively minifies and optimizes CSS color values for maximum code golf and minimal output characters.",
   "author": "xero (https://x-e.ro)",
   "license": "CC0-1.0",
-  "main": "postcss-color-golf.js",
-  "type": "module",
-  "types": "postcss-color-golf.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
-    "import": "./postcss-color-golf.js",
-    "require": "./postcss-color-golf.js"
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
   },
+  "files": [
+    "dist"
+  ],
+	"scripts": {
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"build": "tsup src/index.ts --format esm,cjs"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/xero/postcss-color-golf.git"
+	},
   "keywords": [
     "postcss",
     "postcss-plugin",
@@ -31,14 +43,9 @@
     "postcss": "^8.0.0"
   },
   "devDependencies": {
-    "vitest": "^1.2.0"
-  },
-  "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xero/postcss-color-golf.git"
+    "@types/postcss-js": "^4.0.4",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
   }
 }
