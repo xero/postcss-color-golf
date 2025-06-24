@@ -1,8 +1,8 @@
-# postcss-code-golf
+# postcss-color-golf
 
 > "the code golfer’s color minifier for CSS!"
 
-[![npm version](https://img.shields.io/npm/v/postcss-code-golf.svg)](https://www.npmjs.com/package/postcss-code-golf)
+[![npm version](https://img.shields.io/npm/v/postcss-color-golf.svg)](https://www.npmjs.com/package/postcss-color-golf)
 
 A **PostCSS plugin** that aggressively minifies CSS color values:
 - Shortens hex codes (e.g. `#aabbcc` → `#abc`)
@@ -16,26 +16,26 @@ A **PostCSS plugin** that aggressively minifies CSS color values:
 
 With **npm**:
 ```bash
-npm install postcss-code-golf --save-dev
+npm install postcss-color-golf --save-dev
 ```
 
 With **bun**:
 ```bash
-bun add postcss-code-golf
+bun add postcss-color-golf
 ```
 
 ---
 
 ## Usage
 
-Add `postcss-code-golf` to your PostCSS plugins:
+Add `postcss-color-golf` to your PostCSS plugins:
 
 ```js
 import postcss from "postcss";
-import postCssCodeGolf from "postcss-code-golf";
+import postCssColorGolf from "postcss-color-golf";
 
 postcss([
-  postCssCodeGolf()
+  postCssColorGolf()
 ]).process(YOUR_CSS).then(result => {
   console.log(result.css);
 });
@@ -46,7 +46,7 @@ postcss([
 ```js
 export default {
   plugins: [
-    require("postcss-code-golf")()
+    require("postcss-color-golf")()
   ]
 }
 ```
@@ -59,9 +59,9 @@ Type definitions are included!
 
 ```typescript
 import postcss from "postcss";
-import postCssCodeGolf from "postcss-code-golf";
+import postCssColorGolf from "postcss-color-golf";
 
-postcss([postCssCodeGolf()]).process(cssString).then(result => {
+postcss([postCssColorGolf()]).process(cssString).then(result => {
   console.log(result.css);
 });
 ```

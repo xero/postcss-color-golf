@@ -1,6 +1,6 @@
-const postCssCodeGolf=(opts={})=>{
+const postCssColorGolf=(opts={})=>{
 	return {
-		postcssPlugin: 'postcss-code-golf',
+		postcssPlugin: 'postcss-color-golf',
 		Once(root){
 			const M={
 				aliceblue:'#f0f8ff', antiquewhite:'#faebd7', aqua:'#0ff', aquamarine:'#7fffd4', azure:'#f0ffff', beige:'#f5f5dc', bisque:'#ffe4c4', black:'#000',
@@ -60,4 +60,4 @@ const postCssCodeGolf=(opts={})=>{
 				const newv=optColor(v);
 				if(v!==newv) decl.value=newv;
 })}}};
-export default postCssCodeGolf;
+export default postCssColorGolf;

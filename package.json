@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-golf",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PostCSS plugin that minifies CSS colors with aggressive optimizations: shortens hex codes, converts RGB/A to hex, and replaces color names with shortest equivalents.",
   "type": "module",
 	"types": "postcss-color-golf.d.ts",
