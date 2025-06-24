@@ -1,34 +1,44 @@
 {
   "name": "postcss-color-golf",
-  "version": "1.0.1",
-  "description": "PostCSS plugin that minifies CSS colors with aggressive optimizations: shortens hex codes, converts RGB/A to hex, and replaces color names with shortest equivalents.",
-  "type": "module",
-	"types": "postcss-color-golf.d.ts",
+  "version": "1.0.2",
+  "description": "PostCSS plugin that aggressively minifies and optimizes CSS color values for maximum code golf and minimal output characters.",
+  "author": "xero (https://x-e.ro)",
+  "license": "CC0-1.0",
   "main": "postcss-color-golf.js",
-  "module": "postcss-color-golf.js",
+  "type": "module",
+  "types": "postcss-color-golf.d.ts",
   "exports": {
     "import": "./postcss-color-golf.js",
     "require": "./postcss-color-golf.js"
   },
-  "homepage": "https://github.com/xero/postcss-color-golf",
-  "license": "CC0-1.0",
   "keywords": [
-		"postcss",
-		"postcss-plugin",
-		"css",
-		"minify",
-		"code golf",
-		"color",
-		"hex",
-		"rgb",
-		"rgba",
-		"color names",
-		"optimization",
-		"shorten",
-		"plugin",
-		"css minifier"
+    "postcss",
+    "postcss-plugin",
+    "css",
+    "minify",
+    "color",
+    "optimization",
+    "hex",
+    "rgb",
+    "rgba",
+    "color names",
+    "shorten",
+    "plugin",
+    "css minifier",
+    "code golf"
   ],
-  "dependencies": {
-    "postcss": "^8.5.6"
+  "peerDependencies": {
+    "postcss": "^8.0.0"
+  },
+  "devDependencies": {
+    "vitest": "^1.2.0"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xero/postcss-color-golf.git"
   }
 }

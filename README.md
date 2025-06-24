@@ -14,14 +14,8 @@ A **PostCSS plugin** that aggressively minifies CSS color values:
 
 ## Install
 
-With **npm**:
 ```bash
 npm install postcss-color-golf --save-dev
-```
-
-With **bun**:
-```bash
-bun add postcss-color-golf
 ```
 
 ---
@@ -32,10 +26,10 @@ Add `postcss-color-golf` to your PostCSS plugins:
 
 ```js
 import postcss from "postcss";
-import postCssColorGolf from "postcss-color-golf";
+import colorGolf from "postcss-color-golf";
 
 postcss([
-  postCssColorGolf()
+  colorGolf()
 ]).process(YOUR_CSS).then(result => {
   console.log(result.css);
 });
@@ -59,9 +53,9 @@ Type definitions are included!
 
 ```typescript
 import postcss from "postcss";
-import postCssColorGolf from "postcss-color-golf";
+import colorGolf from "postcss-color-golf";
 
-postcss([postCssColorGolf()]).process(cssString).then(result => {
+postcss([colorGolf()]).process(cssString).then(result => {
   console.log(result.css);
 });
 ```
@@ -110,7 +104,8 @@ a {
 
 ## Options
 
-There are no options currently, just plug it in and go!
+Currently, there are no options—just plug it in and go!
+Future versions may add configuration for specific minification strategies.
 
 ---
 
