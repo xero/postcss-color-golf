@@ -39,6 +39,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xero/postcss-color-golf.git"
+    "url": "git+https://github.com/xero/postcss-color-golf.git"
   }
 }
