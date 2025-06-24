@@ -26,10 +26,10 @@ Add `postcss-color-golf` to your PostCSS plugins:
 
 ```js
 import postcss from "postcss";
-import colorGolf from "postcss-color-golf";
+import postcssColorGolf from "postcss-color-golf";
 
 postcss([
-  colorGolf()
+  postcssColorGolf()
 ]).process(YOUR_CSS).then(result => {
   console.log(result.css);
 });
@@ -40,10 +40,11 @@ postcss([
 ```js
 export default {
   plugins: [
-    require("postcss-color-golf")()
+    require("postcss-color-golf").default()
   ]
 }
 ```
+**Note:** If you are using CommonJS (`require`), use `.default()` as shown above due to ES module export.
 
 ---
 
@@ -53,9 +54,9 @@ Type definitions are included!
 
 ```typescript
 import postcss from "postcss";
-import colorGolf from "postcss-color-golf";
+import postcssColorGolf from "postcss-color-golf";
 
-postcss([colorGolf()]).process(cssString).then(result => {
+postcss([postcssColorGolf()]).process(cssString).then(result => {
   console.log(result.css);
 });
 ```
@@ -106,8 +107,6 @@ a {
 
 Currently, there are no options—just plug it in and go!
 Future versions may add configuration for specific minification strategies.
-
----
 
 ## License
 

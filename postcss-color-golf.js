@@ -1,5 +1,4 @@
-const postCssColorGolf=(opts={})=>{
-	return {
+const postcssColorGolf=(opts={})=>({
 		postcssPlugin: 'postcss-color-golf',
 		Once(root){
 			const M={
@@ -59,5 +58,5 @@ const postCssColorGolf=(opts={})=>{
 				const v=decl.value;
 				const newv=optColor(v);
 				if(v!==newv) decl.value=newv;
-})}}};
-export default postCssColorGolf;
+})}});
+export default postcssColorGolf;

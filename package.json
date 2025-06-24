@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-golf",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "PostCSS plugin that aggressively minifies and optimizes CSS color values for maximum code golf and minimal output characters.",
   "author": "xero (https://x-e.ro)",
   "license": "CC0-1.0",

@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2025-06-24
+### Changed
+- Fixed class names to match postcss plugin style
 ## [1.0.2] - 2025-06-24
 ### Added
 - Added first basic test suite.
