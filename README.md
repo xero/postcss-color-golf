@@ -13,7 +13,8 @@ A **PostCSS plugin** that aggressively minifies CSS color values:
 - Shortens hex codes (`#aabbcc` → `#abc`)
 - Converts `rgb()`/`rgba()` to hex when shorter
 - Replaces color names with their shortest possible equivalent
-- Designed for the most compact CSS output—perfect for code golf!
+- Designed to produce the most compact CSS output—for you code golfers!
+- Works with {all/most?} other postcss plugins in the ecosystem
 
 ---
 
@@ -21,14 +22,27 @@ A **PostCSS plugin** that aggressively minifies CSS color values:
 
 ```bash
 npm install postcss-color-golf --save-dev
-or
+```
+_or_
+```bash
 bun i postcss-color-golf --dev
 ```
 ---
 
 ## Usage
 
-### ESM (Node ≥ 12+, modern bundlers, most setups)
+### postcss.config.js
+
+```js
+module.exports = {
+  plugins: [
+    require("postcss-color-golf")
+    // ...other plugins
+  ]
+};
+```
+
+### ESM (Node ≥ 12+ modern bundlers)
 
 ```js
 import postcss from "postcss";
@@ -54,17 +68,6 @@ postcss([
 });
 ```
 
-### postcss.config.js
-
-```js
-module.exports = {
-  plugins: [
-    require("postcss-color-golf")
-    // ...other plugins
-  ]
-};
-```
-
 ### TypeScript
 
 ```ts
@@ -80,15 +83,16 @@ postcss([postcssColorGolf()]).process(cssString).then(result => {
 
 ## What does it do?
 
-- **Shortens hex codes:**
-  `#aabbcc` → `#abc`
-- **Converts rgb/rgba to hex:**
-  `rgb(255,0,0)` → `#f00`
-  `rgba(0,255,0,0.5)` → `#0f080`
-- **Replaces color names:**
-  `blue` → `#00f`, `fuchsia` → `#f0f`
 - **Aggressive color minification:**
-  Optimizes every color value it finds for the shortest possible output.
+Optimizes every color value it finds for the shortest possible output.
+- **Shortens hex codes:**
+    `#aabbcc` → `#abc`
+- **Converts rgb/rgba to hex:**
+    `rgb(255,0,0)` → `#f00`
+    `rgba(0,255,0,0.5)` → `#0f080`
+- **Replaces color names:**
+    `rgb(255,0,0)` → `red`
+    `blue` → `#00f`, `fuchsia` → `#f0f`
 
 ---
 
@@ -97,22 +101,28 @@ postcss([postcssColorGolf()]).process(cssString).then(result => {
 **Input:**
 ```css
 a {
+  --ts-color-black:#000000;
   color: rgb(255,0,0);
   background: aliceblue;
   border: 1px solid #aabbcc;
-  box-shadow: 0 0 3px rgba(0,255,0,0.5);
+  box-shadow:0 0 3px rgba(0,255,0,0.5);
+  &::hover {border-color:fuchsia}
 }
 ```
 
 **Output:**
 ```css
 a {
-  color:#f00;
-  background:#f0f8ff;
-  border:1px solid #abc;
+  --ts-color-black:#000;
+  color: red;
+  background: #f0f8ff;
+  border: 1px solid #abc;
   box-shadow:0 0 3px #0f080;
+  &::hover {border-color:#f0f}
 }
 ```
+
+__Note: This plugin strictly replaces color code strings, while respecting spaces and other surrounding characters.__
 
 ---
 
