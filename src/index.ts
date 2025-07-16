@@ -1,8 +1,6 @@
-import type { Plugin, Root } from 'postcss';
+import type {PluginCreator,Root,Declaration} from 'postcss';
 export interface PostcssColorGolfOptions {}
-const postcssColorGolf=(_:PostcssColorGolfOptions={}):Plugin=>({
-	postcssPlugin: 'postcss-color-golf',
-	Once(root: Root) {
+const postcssColorGolf=((_opts:PostcssColorGolfOptions={})=>{
 		const M={
 			aliceblue:'#f0f8ff', antiquewhite:'#faebd7', aqua:'#0ff', aquamarine:'#7fffd4', azure:'#f0ffff', beige:'#f5f5dc', bisque:'#ffe4c4', black:'#000',
 			blanchedalmond:'#ffebcd', blue:'#00f', blueviolet:'#8a2be2', brown:'#a52a2a', burlywood:'#deb887', cadetblue:'#5f9ea0', chartreuse:'#7fff00',
@@ -94,10 +92,16 @@ const postcssColorGolf=(_:PostcssColorGolfOptions={}):Plugin=>({
 				return hex.length<name.length?hex:name;
 			}
 		);
-		root.walkDecls(decl=>{
+  return (root:Root)=>{
+    root.walkDecls((decl:Declaration)=>{
 			const v=decl.value;
 			const newv=optColor(v);
 			if(v!==newv) decl.value=newv;
-		})}});
-(postcssColorGolf as any).postcss=true;
+    });
+  };
+}) as unknown as PluginCreator<PostcssColorGolfOptions>;
+Object.assign(postcssColorGolf, {
+  postcssPlugin: 'postcss-color-golf',
+  postcss: true,
+});
 export default postcssColorGolf;
