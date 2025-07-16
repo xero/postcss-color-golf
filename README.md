@@ -25,7 +25,7 @@ A **PostCSS plugin** that aggressively minifies CSS color values:
 - Ignores unminifiable or equivalents
     - `lime` → `lime`
     - `#0f0` → `#0f0`
-- Works with `{all,most?}` other PostCSS plugins in the ecosystem
+- Compatible with PostCSS v8+ and other plugins in the ecosystem.
 
 ---
 
@@ -41,6 +41,10 @@ bun i postcss-color-golf --dev
 ---
 
 ## Usage
+
+> **Note:**
+> `postcss-color-golf` supports both ESM (`import`) and CommonJS (`require`).
+> See [Dual Package Hazard](https://nodejs.org/api/packages.html#dual-package-hazard) for more info.
 
 ### postcss.config.js
 
@@ -92,10 +96,13 @@ postcss([postcssColorGolf()]).process(cssString).then(result => {
 
 ---
 
-## Options
+## API
 
-Currently, there are no options—just plug it in and go!
-Future versions may add configuration for specific minification strategies.
+```
+postcssColorGolf([options])
+```
+
+- **options:** *none currently* (future versions may allow configuration)
 
 ---
 
@@ -111,6 +118,12 @@ Optimizes every color value it finds for the shortest possible output.
 - **Replaces color names:**
     `rgb(255,0,0)` → `red`
     `blue` → `#00f`, `fuchsia` → `#f0f`
+
+## Limitations
+
+- Does not parse or optimize colors inside comments or string values.
+- Only minifies standard CSS color values (hex, rgb/a, hsl/a, named colors).
+- Does not attempt advanced color equivalency (e.g., `#00ff00` vs `lime` in unusual color spaces).
 
 ---
 

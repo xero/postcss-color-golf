@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-golf",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "PostCSS plugin that aggressively minifies and optimizes CSS color values for maximum code golf and minimal output characters.",
   "author": "xero (https://x-e.ro)",
   "license": "CC0-1.0",
@@ -9,7 +9,7 @@
   "types": "dist/index.d.ts",
 	"exports": {
 		"import": "./dist/index.mjs",
-		"require": "./dist/index.cjs",
+		"require": "./dist/cjs-proxy.cjs",
 		"default": "./dist/index.cjs"
 	},
   "files": [
@@ -18,7 +18,7 @@
 	"scripts": {
 		"test": "vitest run",
 		"test:watch": "vitest",
-		"build": "tsup src/index.ts --format esm,cjs"
+		"build": "tsup src/index.ts --format esm,cjs && printf '%s' \"module.exports=require('./index.cjs').default;\" > ./dist/cjs-proxy.cjs"
 	},
 	"repository": {
 		"type": "git",

@@ -6,6 +6,7 @@ export default defineConfig({
   clean:true,
   minify:false,
   sourcemap:false,
+	cjsInterop: false,
   external:['postcss'],
   outExtension({format}) {
     return {
