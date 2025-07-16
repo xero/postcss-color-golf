@@ -1,6 +1,6 @@
 import type { Plugin, Root } from 'postcss';
 export interface PostcssColorGolfOptions {}
-const postcssColorGolf=(opts:PostcssColorGolfOptions={}):Plugin=>({
+const postcssColorGolf=(_:PostcssColorGolfOptions={}):Plugin=>({
 	postcssPlugin: 'postcss-color-golf',
 	Once(root: Root) {
 		const M={
@@ -25,16 +25,42 @@ const postcssColorGolf=(opts:PostcssColorGolfOptions={}):Plugin=>({
 			thistle:'#d8bfd8', tomato:'#ff6347', turquoise:'#40e0d0', violet:'#ee82ee', wheat:'#f5deb3', white:'#fff', whitesmoke:'#f5f5f5', yellow:'#ff0',
 			yellowgreen:'#9acd32', transparent:'rgba(0,0,0,0)'
 		},
-		// shorten hex code if possible (#112233 → #123)
 		shortHex=(H:string)=>{
 			H=H.toLowerCase();
 			if(/^#([\da-f])\1([\da-f])\2([\da-f])\3$/i.test(H)){ return "#"+H[1]+H[3]+H[5] }
 			return H;
 		},
-		// rgb to hex
-		rgbHex=(R: string | number, G: string | number, B: string | number) =>
-			"#"+[R,G,B].map(X=>("0"+(+X).toString(16)).slice(-2)).join(""),
-		// optimize rgba/hex if possible
+		hexToName: Record<string, string> = Object.entries(M).reduce(
+			(acc: Record<string, string>, [name, hex]: [string, string]) => {
+				const sHex: string = shortHex(hex);
+				if((!acc[sHex]||name.length<acc[sHex].length) && name.length<sHex.length){acc[sHex]=name}
+				return acc;
+			},{}
+		),
+		rgbHex=(
+			R:string|number,
+			G:string|number,
+			B:string|number,
+			A?:string|number
+		)=>{
+			const toHex=(X:string|number)=>
+				("0"+(+X).toString(16)).slice(-2).toLowerCase();
+			let r=toHex(R),g=toHex(G),b=toHex(B);
+			let hex="#"+r+g+b;
+
+			if(A!=null && +A!==1){
+				let a=Math.round(+A*255);
+				let alpha=("0"+a.toString(16)).slice(-2).toLowerCase();
+				hex+=alpha;
+				if(
+					r[0]===r[1]&&
+					g[0]===g[1]&&
+					b[0]===b[1]&&
+					alpha[0]===alpha[1]
+				){return "#"+r[0]+g[0]+b[0]+alpha[0]}
+			}
+			return hex;
+		},
 		optColor=(V:string)=>
 			V.replace(
 				/rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})(?:\s*,\s*([.\d]+))?\s*\)/gi,
@@ -53,10 +79,21 @@ const postcssColorGolf=(opts:PostcssColorGolfOptions={}):Plugin=>({
 				H => shortHex(H)
 			)
 			.replace(
-				new RegExp("\\b("+Object.keys(M).join("|")+")\\b","gi"),
-				k=>M[k.toLowerCase() as keyof typeof M]
-			);
-		// apply to all declarations
+				/#([\da-f]{3,8})\b/gi,
+				(H:string):string=>{
+					const sH:string=shortHex(H.toLowerCase());
+					const name:string|undefined=hexToName[sH];
+					return name?name:sH;
+				}
+			)
+		.replace(
+			new RegExp("\\b("+Object.keys(M).join("|")+")\\b","gi"),
+			k=>{
+				const name=k.toLowerCase();
+				const hex=M[name as keyof typeof M];
+				return hex.length<name.length?hex:name;
+			}
+		);
 		root.walkDecls(decl=>{
 			const v=decl.value;
 			const newv=optColor(v);
