@@ -144,7 +144,7 @@ _**Note:** This plugin strictly replaces color code strings, while respecting sp
 
 # Contributing
 
-Project contributions welcomed! Feel free to submit and issue or pull request to this repo.
+Project contributions welcomed! Feel free to submit an issue or pull request to this repo.
 - Make sure all changes or new features are covered by the unit test(s).
 - Ensure the examples in this file are updated to show off the new feature.
 
