@@ -10,11 +10,22 @@
 [![bundle size](https://img.shields.io/bundlephobia/minzip/postcss-color-golf)](https://bundlephobia.com/result?p=postcss-color-golf)
 
 A **PostCSS plugin** that aggressively minifies CSS color values:
-- Shortens hex codes (`#aabbcc` → `#abc`)
-- Converts `rgb()`/`rgba()` to hex when shorter
-- Replaces color names with their shortest possible equivalent
 - Designed to produce the most compact CSS output—for you code golfers!
-- Works with {all/most?} other postcss plugins in the ecosystem
+- Shortens hex codes
+    - `#aabbcc` → `#abc`
+- Converts `rgb()`/`rgba()` to hex when shorter
+    - `rgba(255, 170, 187, 0.8)` → `#fabcc`
+- Replaces color names with shortest possible equivalents
+    - fuchsia → `#f0f`
+- Replaces hex/rgb values with color names when shorter
+    - `#f00` → `red` _(yes 1 char is a win!)_
+    - `#ff0000` → `red`
+    - `rgb(255,0,0)` → `red`
+    - `rgba(255, 0, 0, 1)` → `red`
+- Ignores unminifiable or equivalents
+    - `lime` → `lime`
+    - `#0f0` → `#0f0`
+- Works with `{all,most?}` other PostCSS plugins in the ecosystem
 
 ---
 
@@ -81,6 +92,13 @@ postcss([postcssColorGolf()]).process(cssString).then(result => {
 
 ---
 
+## Options
+
+Currently, there are no options—just plug it in and go!
+Future versions may add configuration for specific minification strategies.
+
+---
+
 ## What does it do?
 
 - **Aggressive color minification:**
@@ -122,14 +140,38 @@ a {
 }
 ```
 
-__Note: This plugin strictly replaces color code strings, while respecting spaces and other surrounding characters.__
+_**Note:** This plugin strictly replaces color code strings, while respecting spaces and other surrounding characters._
 
----
+# Contributing
 
-## Options
+Project contributions welcomed! Feel free to submit and issue or pull request to this repo.
+- Make sure all changes or new features are covered by the unit test(s).
+- Ensure the examples in this file are updated to show off the new feature.
 
-Currently, there are no options—just plug it in and go!
-Future versions may add configuration for specific minification strategies.
+## Building
+
+clone the source, install, edit, then run:
+```bash
+npm run build
+```
+_or_
+```bash
+bun run build
+```
+
+## Testing
+
+There's a single unit test in `test/basic.test.js` with pretty good coverage. Still lots of room for improvement.
+
+Run the [vite](https://github.com/vitest-dev/vitest) tests with:
+
+```bash
+npm run test
+```
+_or_
+```bash
+bun run test
+```
 
 ---
 
