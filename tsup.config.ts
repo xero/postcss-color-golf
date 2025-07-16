@@ -1,10 +1,15 @@
-import { defineConfig } from 'tsup';
+import {defineConfig} from 'tsup';
 export default defineConfig({
-  entry: ['postcss-color-golf.js'],
-  dts: true,
-  format: ['esm', 'cjs'],
-  clean: true,
-  minify: false,
-  sourcemap: false,
-  external: ['postcss']
+  entry:['src/index.ts'],
+  dts:true,
+  format:['esm','cjs'],
+  clean:true,
+  minify:false,
+  sourcemap:false,
+  external:['postcss'],
+  outExtension({format}) {
+    return {
+      js:format==='cjs'?'.cjs':'.mjs'
+    }
+  }
 });

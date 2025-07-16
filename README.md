@@ -21,8 +21,9 @@ A **PostCSS plugin** that aggressively minifies CSS color values:
 
 ```bash
 npm install postcss-color-golf --save-dev
+or
+bun i postcss-color-golf --dev
 ```
-
 ---
 
 ## Usage
@@ -42,9 +43,6 @@ postcss([
 
 ### CommonJS (require)
 
-> **No `.default` needed!**
-> The dual build makes this work as expected.
-
 ```js
 const postcss = require("postcss");
 const postcssColorGolf = require("postcss-color-golf");
@@ -61,15 +59,13 @@ postcss([
 ```js
 module.exports = {
   plugins: [
-    require("postcss-color-golf")()
+    require("postcss-color-golf")
     // ...other plugins
   ]
 };
 ```
 
 ### TypeScript
-
-Type definitions are included for a great developer experience:
 
 ```ts
 import postcss from "postcss";
