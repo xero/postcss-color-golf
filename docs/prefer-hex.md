@@ -10,17 +10,17 @@ But what if both forms are exactly the same length? That's where the `preferHex`
 
 This only affects cases where both forms are equally short. For example:
 
-| Input Color   | preferHex: true | preferHex: false |
-|---------------|-----------------|------------------|
-| `red`         | `red` †         | `red`            |
-| `#f00`        | `#f00`          | `red`            |
-| `blue`        | `#00f`          | `blue`           |
-| `#00f`        | `#00f`          | `blue`           |
-| `yellow`      | `#ff0`          | `#ff0`           |
-| `#ff0`        | `#ff0`          | `#ff0`           |
-| `aqua`        | `#0ff`          | `#0ff`           |
-| `#0ff`        | `#0ff`          | `aqua`           |
-| `cyan`        | `#0ff`          | `aqua` ‡         |
+| Input Color   | preferHex: true | preferHex: false | Color |
+|---------------|-----------------|------------------|-------|
+| `red`         | `red` †         | `red`            | ![■](https://placehold.co/16x16/f00/f00) |
+| `#f00`        | `#f00`          | `red`            | ![■](https://placehold.co/16x16/f00/f00) |
+| `blue`        | `#00f`          | `blue`           | ![■](https://placehold.co/16x16/00f/00f) |
+| `#00f`        | `#00f`          | `blue`           | ![■](https://placehold.co/16x16/00f/00f) |
+| `yellow`      | `#ff0`          | `#ff0`           | ![■](https://placehold.co/16x16/ff0/ff0) |
+| `#ff0`        | `#ff0`          | `#ff0`           | ![■](https://placehold.co/16x16/ff0/ff0) |
+| `aqua`        | `#0ff`          | `#0ff`           | ![■](https://placehold.co/16x16/0ff/0ff) |
+| `#0ff`        | `#0ff`          | `aqua`           | ![■](https://placehold.co/16x16/0ff/0ff) |
+| `cyan`        | `#0ff`          | `aqua` ‡         | ![■](https://placehold.co/16x16/0ff/0ff) |
 
 _† "red" is shorter (3 characters) than "#f00" (4 characters)_
 
