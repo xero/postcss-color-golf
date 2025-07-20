@@ -53,7 +53,7 @@ function parseSkipRule(
 
 export function compileSkipRules(
   rules:(string|RegExp)[],
-  docsUrl:string="https://github.com/yourorg/yourplugin#skip-rules"
+  docsUrl:string="https://github.com/xero/postcss-color-golf/blob/main/docs/skip-rules.md"
 ):SkipPattern[] {
   return [...DEFAULT_SKIP, ...rules].map((rule, idx)=>{
     if(typeof rule==="string"){

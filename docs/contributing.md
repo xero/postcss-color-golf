@@ -1,11 +1,15 @@
-# Contributing to postcss-color-golf
+# ⛳️ PostCSS Color Golf Documentation
+
+---
+
+## Contributing to postcss-color-golf
 
 We welcome contributions of all kinds—bug reports, feature requests, code, and documentation!
 This guide will help you get started, understand the project structure, and follow our coding standards.
 
 ---
 
-## How to Contribute
+### How to Contribute
 
 1. **Fork the repository** and create a new branch for your changes.
 2. **Write clear, focused commits**—one feature or fix per commit is best.
@@ -15,43 +19,43 @@ This guide will help you get started, understand the project structure, and foll
 
 ---
 
-## Running the Project Locally
+### Running the Project Locally
 
-### Install Dependencies
+#### Install Dependencies
 
 ```bash
 bun install
-# or
+## or
 npm install
 ```
 
-### Build the Plugin
+#### Build the Plugin
 
 ```bash
 bun run build
-# or
+## or
 npm run build
 ```
 
-### Run Tests
+#### Run Tests
 
 ```bash
 bun run test
-# or
+## or
 npm run test
 ```
 
-### Lint the Code
+#### Lint the Code
 
 ```bash
 bun run lint
-# or
+## or
 npm run lint
 ```
 
 ---
 
-## Coding Standards
+### Coding Standards
 
 - **TypeScript:** All source code is written in TypeScript (`src/`).
 - **Linting:** We use ESLint for code quality. See `eslint.config.js`.
@@ -61,7 +65,7 @@ npm run lint
 
 ---
 
-## Project Structure
+### Project Structure
 
 | Path/File                | Purpose/Description                                              |
 |--------------------------|------------------------------------------------------------------|
@@ -88,7 +92,7 @@ npm run lint
 
 ---
 
-## Tips for Contributors
+### Tips for Contributors
 
 - Keep pull requests focused and easy to review.
 - If you’re not sure about a change, open an issue or draft PR to discuss first.
@@ -97,4 +101,10 @@ npm run lint
 
 ---
 
-### Thank you for helping make postcss-color-golf a hole in one! ⛳️
+#### Thank you for helping make postcss-color-golf a hole in one! ⛳️
+
+---
+
+[← Back to PostCSS Color Golf Documentation Table of Contents](./README.md) ⛳️
+
+**License:** CC0 1.0 Universal / Public Domain / KOPIMI ⟁

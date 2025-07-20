@@ -1,10 +1,14 @@
-# Troubleshooting & FAQ
+# ⛳️ PostCSS Color Golf Documentation
+
+---
+
+## Troubleshooting & FAQ
 
 This guide covers common issues, debugging tips, and answers to frequently asked questions about using postcss-color-golf.
 
 ---
 
-## My color didn't get minified!
+### My color didn't get minified!
 
 **Possible causes:**
 - The color is inside a CSS property or selector that matches your `skip` rules.
@@ -15,7 +19,7 @@ This guide covers common issues, debugging tips, and answers to frequently asked
 
 ---
 
-## Why did my color change slightly?
+### Why did my color change slightly?
 
 - Some color spaces (like `lab`, `oklab`, `display-p3`, etc.) cannot be represented exactly in sRGB/hex/named CSS colors.
   When minified, these are **approximated** to the nearest supported value.
@@ -23,7 +27,7 @@ This guide covers common issues, debugging tips, and answers to frequently asked
 
 ---
 
-## Why doesn't it output pseudo-short hex codes (like `#abcc`)?
+### Why doesn't it output pseudo-short hex codes (like `#abcc`)?
 
 - postcss-color-golf always produces **spec-compliant** CSS color codes.
 - Only outputs 3- or 4-digit hex when _all_ pairs match (per the CSS spec).
@@ -31,26 +35,26 @@ This guide covers common issues, debugging tips, and answers to frequently asked
 
 ---
 
-## Why doesn't it minify colors inside strings or URLs?
+### Why doesn't it minify colors inside strings or URLs?
 
 - For safety and correctness, the plugin ignores color-like values inside quoted strings and `url()` functions.
 - This prevents accidental changes to things like image URLs, font names, or arbitrary content.
 
 ---
 
-## Why is "transparent" sometimes used instead of a hex or rgba value?
+### Why is "transparent" sometimes used instead of a hex or rgba value?
 
 - If a color is fully transparent (alpha = 0), the plugin outputs `transparent` (when legal), as it's the shortest and most readable form.
 
 ---
 
-## Why does my gradient or function have extra spaces?
+### Why does my gradient or function have extra spaces?
 
 - The plugin normalizes whitespace for spec-compliance and readability, but if you see unexpected spaces, please [open an issue](https://github.com/your-repo/issues) with a sample input.
 
 ---
 
-## How can I debug what is being skipped or minified?
+### How can I debug what is being skipped or minified?
 
 - Start by disabling your `skip` rules and opt-out options to see if the color is minified.
 - Add a temporary `console.log` in your build or plugin config to inspect the processed CSS.
@@ -58,7 +62,7 @@ This guide covers common issues, debugging tips, and answers to frequently asked
 
 ---
 
-## Why does the output differ from other minifiers or older versions?
+### Why does the output differ from other minifiers or older versions?
 
 - postcss-color-golf is powered by [Culori](https://culorijs.org/), which uses the latest color science and browser standards.
 - Some conversions (especially for advanced color spaces) may differ slightly from legacy tools or older plugin versions.
@@ -66,7 +70,7 @@ This guide covers common issues, debugging tips, and answers to frequently asked
 
 ---
 
-## Still having trouble?
+### Still having trouble?
 
 - Double-check your plugin configuration and options.
 - Review the [API documentation](./api.md) and [README](../README.md).
@@ -74,9 +78,15 @@ This guide covers common issues, debugging tips, and answers to frequently asked
 
 ---
 
-## See Also
+### See Also
 
 - [Skip Rules](./skip-rules.md)
 - [Color Space Skipping](./color-space-skipping.md)
 - [Color Minification Logic](./color-minification-logic.md)
 - [API Reference](./api.md)
+
+---
+
+[← Back to PostCSS Color Golf Documentation Table of Contents](./README.md) ⛳️
+
+**License:** CC0 1.0 Universal / Public Domain / KOPIMI ⟁

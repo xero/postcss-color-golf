@@ -1,10 +1,14 @@
-# Integration & Compatibility: _"Get into The Game!"_
+# ⛳️ PostCSS Color Golf Documentation
+
+---
+
+## Integration & Compatibility: _"Get into The Game!"_
 
 This guide explains how to integrate postcss-color-golf into your build process, which environments are supported, and how it works alongside other tools and dependencies.
 
 ---
 
-## Runtime Dependencies
+### Runtime Dependencies
 
 To use postcss-color-golf, you (or your build tool) must have the following runtime dependencies installed:
 
@@ -21,7 +25,7 @@ These are automatically installed if you use npm/bun/yarn/pnpm and install postc
 
 ---
 
-## Development Dependencies
+### Development Dependencies
 
 If you want to contribute to or build postcss-color-golf locally, you’ll also need:
 
@@ -34,7 +38,7 @@ These are only required for development and are not needed for end users.
 
 ---
 
-## Supported Environments
+### Supported Environments
 
 - **PostCSS v8+** is required.
 - Works with both **CommonJS** and **ESM** module systems.
@@ -50,9 +54,9 @@ These are only required for development and are not needed for end users.
 
 ---
 
-## Basic Integration
+### Basic Integration
 
-### With postcss.config.js
+#### With postcss.config.js
 
 ```js
 module.exports = {
@@ -65,7 +69,7 @@ module.exports = {
 };
 ```
 
-### With ESM
+#### With ESM
 
 ```js
 import postcss from "postcss";
@@ -81,7 +85,7 @@ postcss([
 
 ---
 
-## Using with Other PostCSS Plugins
+### Using with Other PostCSS Plugins
 
 postcss-color-golf is designed to be compatible with all standard PostCSS plugins.
 **Recommended order:** Place postcss-color-golf early in your plugin list, before plugins that might further transform or optimize CSS (like cssnano or autoprefixer).
@@ -97,7 +101,7 @@ plugins: [
 
 ---
 
-## Compatibility Notes
+### Compatibility Notes
 
 - **CSS Syntax:**
   Only standard CSS color notations and spaces supported by [Culori](https://culorijs.org/color-spaces/) are minified. Non-standard or custom color functions are ignored.
@@ -110,7 +114,7 @@ plugins: [
 
 ---
 
-## Known Issues & Caveats
+### Known Issues & Caveats
 
 - **Advanced Color Spaces:**
   Some color spaces (like lab, oklab, display-p3, etc.) are approximated to sRGB. Use the opt-out options if you need exact values.
@@ -121,9 +125,15 @@ plugins: [
 
 ---
 
-## See Also
+### See Also
 
 - [API Reference](./api.md)
 - [Troubleshooting](./troubleshooting.md)
 - [Color Space Skipping](./color-space-skipping.md)
 - [README](../README.md)
+
+---
+
+[← Back to PostCSS Color Golf Documentation Table of Contents](./README.md) ⛳️
+
+**License:** CC0 1.0 Universal / Public Domain / KOPIMI ⟁

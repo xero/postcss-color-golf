@@ -1,8 +1,12 @@
-# Skip Rules: _"A Pure RegEx Lay-up!"_
+# ⛳️ PostCSS Color Golf Documentation
+
+---
+
+## Skip Rules: _"A Pure RegEx Lay-up!"_
 
 You can skip processing for certain CSS properties, selectors, or at-rules with the `skip` option.
 
-## How Skip Rules Work
+### How Skip Rules Work
 
 - **Plain string:** Matches exactly.
   Example: `'content'` will skip the `content` property everywhere.
@@ -12,9 +16,9 @@ You can skip processing for certain CSS properties, selectors, or at-rules with 
 
 If any regex is unsafe or invalid, the plugin will throw an error and will not process your CSS.
 
-## Examples
+### Examples
 
-### Skipping by Property Name
+#### Skipping by Property Name
 
 ```js
 {
@@ -26,7 +30,7 @@ If any regex is unsafe or invalid, the plugin will throw an error and will not p
 }
 ```
 
-### Skipping by Selector or At-rule (Regex)
+#### Skipping by Selector or At-rule (Regex)
 
 ```js
 {
@@ -42,7 +46,7 @@ If any regex is unsafe or invalid, the plugin will throw an error and will not p
 }
 ```
 
-### Regex Flags
+#### Regex Flags
 
 - `i` — case-insensitive
 - `g` — global (not typically needed for skip rules)
@@ -59,19 +63,19 @@ If any regex is unsafe or invalid, the plugin will throw an error and will not p
 }
 ```
 
-## What Can Be Skipped?
+### What Can Be Skipped?
 
 - **Properties:** Any CSS property name (e.g. `color`, `background-color`, `font-family`)
 - **Selectors:** Any selector string (e.g. `.my-class`, `#main`, `h1`, `a`)
 - **At-rules:** Any at-rule (e.g. `@media`, `@font-face`)
 
-## Matching Details
+### Matching Details
 
 - **Plain strings** must match the property/selector/at-rule exactly.
 - **Regex** can match any part of the property/selector/at-rule string.
 - Regex patterns are anchored if you use `^` (start) or `$` (end).
 
-### More Examples
+#### More Examples
 
 | Rule                   | Matches                        | Does NOT Match           |
 |------------------------|-------------------------------|--------------------------|
@@ -82,7 +86,7 @@ If any regex is unsafe or invalid, the plugin will throw an error and will not p
 | `'regex:^#main$:'`     | `#main` selector               | `#main-content`          |
 | `'regex:^@media'`      | `@media screen`, `@media print`| `@font-face`             |
 
-## Advanced: Skipping Multiple Patterns
+### Advanced: Skipping Multiple Patterns
 
 You can combine multiple skip rules for fine-grained control:
 
@@ -101,19 +105,19 @@ You can combine multiple skip rules for fine-grained control:
 
 This will skip all `content` and `font-family` properties, any selector starting with `.ignore-`, any property ending with `color` (case-insensitive), the `h1` selector, and all `@media` at-rules.
 
-## Error Handling
+### Error Handling
 
 - If you provide an invalid or unsafe regex, the plugin will throw an error and stop processing.
 - Use simple, safe regex patterns for best results.
 
-## Tips
+### Tips
 
 - Use plain strings for exact matches (fastest).
 - Use regex for flexible or pattern-based skipping.
 - Test your regex patterns at [Regex101](https://regex101.com/) before using them in your config.
 - You can mix plain strings and regex rules in the same `skip` array.
 
-## Regex Flavor
+### Regex Flavor
 
 postcss-color-golf is a JavaScript tool, so all regex skip rules use the same regular expression syntax as native JavaScript (ECMAScript/ES2018+).
 This is very similar to PCRE (Perl Compatible Regular Expressions), but with some differences and limitations.
@@ -127,9 +131,15 @@ This is very similar to PCRE (Perl Compatible Regular Expressions), but with som
 - [ECMAScript RegExp Specification](https://tc39.es/ecma262/#sec-regexp-regular-expression-objects)
 - [Regex101 (set flavor to JavaScript)](https://regex101.com/)
 
-## More Reading
+### More Reading
 
 - [MDN: Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 - [Regex101 (JavaScript flavor)](https://regex101.com/)
 - [ECMAScript RegExp Spec](https://tc39.es/ecma262/#sec-regexp-regular-expression-objects)
 - [PCRE vs JavaScript Regex Comparison](https://www.regular-expressions.info/refflavors.html)
+
+---
+
+[← Back to PostCSS Color Golf Documentation Table of Contents](./README.md) ⛳️
+
+**License:** CC0 1.0 Universal / Public Domain / KOPIMI ⟁

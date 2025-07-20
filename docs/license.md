@@ -1,4 +1,8 @@
-# License
+# ⛳️ PostCSS Color Golf Documentation
+
+---
+
+## License
 
 **CC0 1.0 Universal (Public Domain Dedication)**
 
@@ -28,3 +32,9 @@ This project directly depends on the following libraries and tools:
 
 **All rights reserved by their respective authors.**
 Thank you to every contributor and maintainer of these projects for supporting open source and making tools like postcss-color-golf possible!
+
+---
+
+[← Back to PostCSS Color Golf Documentation Table of Contents](./README.md) ⛳️
+
+**License:** CC0 1.0 Universal / Public Domain / KOPIMI ⟁

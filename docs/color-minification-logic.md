@@ -1,6 +1,10 @@
-# Color Minification Logic
+# ⛳️ PostCSS Color Golf Documentation
 
-## Understanding Color Spaces and Notations
+----
+
+## Color Minification Logic: _it's a triple eagle!_
+
+### Understanding Color Spaces and Notations
 
 CSS supports a wide variety of color notations and color spaces, each with its own syntax and use cases:
 
@@ -15,11 +19,11 @@ CSS supports a wide variety of color notations and color spaces, each with its o
   - **Gray (`gray(50%)`)**
   - And more, as defined by the CSS Color Module Level 4 and beyond.
 
-## How postcss-color-golf Minifies Colors
+### How postcss-color-golf Minifies Colors
 
 Our plugin's goal is to always output the **shortest legal CSS color** for every color value, while guaranteeing that the result is valid and renders correctly in browsers.
 
-### The Minification Process
+#### The Minification Process
 
 1. **Parse with Culori**
    Every color value is parsed using [Culori](https://culorijs.org/), a modern, actively maintained color library. Culori supports all modern and legacy color spaces, ensuring robust parsing and conversion.
@@ -44,7 +48,21 @@ Our plugin's goal is to always output the **shortest legal CSS color** for every
    - When converting from advanced color spaces (like Lab, Oklab, Display-P3, etc.), some values may be approximated to the nearest sRGB color.
    - Users can opt out of minifying these spaces to avoid any risk of color shift (see [Color Space Skipping](./color-space-skipping.md)).
 
-### Why Culori?
+#### Caveats
+
+- **Whitespace Normalization:**
+  The plugin normalizes whitespace and commas in color functions and gradients for spec-compliance and consistency. This may slightly alter formatting but not the meaning of your CSS.
+
+- **Nested Function Minification:**
+  Colors inside nested CSS functions (such as gradients) are recursively minified. All supported color notations within these functions will be shortened if possible.
+
+- **Unparseable or Invalid Colors:**
+  If a value cannot be parsed as a valid color by Culori, it is left unchanged. The plugin will not throw errors or break your CSS in these cases.
+
+- **No Minification in Strings, Comments, or URLs:**
+  Color-like values inside quoted strings, comments, or `url()` functions are intentionally ignored for safety and correctness.
+
+#### Why Culori?
 
 Culori is a well-vetted, community-driven color library trusted by the web development and data visualization communities.
 - **Actively maintained:** Regular updates and improvements.
@@ -56,7 +74,7 @@ By building on Culori, postcss-color-golf ensures your color minification is alw
 
 ---
 
-## Summary
+### Summary
 
 - **Shortest legal CSS color, every time**
 - **Spec-compliant and browser-safe**
@@ -68,3 +86,9 @@ For more details, see:
 - [Color Space Skipping](./color-space-skipping.md)
 - [The preferHex Option](./prefer-hex.md)
 - [Skip Rules](./skip-rules.md)
+
+---
+
+[← Back to Documentation Table of Contents](./README.md)
+
+**License:** CC0 1.0 Universal / Public Domain / KOPIMI ⟁
