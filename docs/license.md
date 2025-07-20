@@ -7,7 +7,7 @@ This software is distributed without any warranty.
 
 You may copy, modify, distribute, and use the software for any purpose, commercial or non-commercial, without restriction.
 
-See [LICENSE](./LICENSE) for the full legal text.
+See [LICENSE](../LICENSE) for the full legal text.
 
 ---
 

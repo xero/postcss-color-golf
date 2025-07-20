@@ -5,19 +5,26 @@ But what if both forms are exactly the same length? That's where the `preferHex`
 
 ## What Does `preferHex` Do?
 
-- If `preferHex` is `true` (the default), the plugin will use hex notation (`#f00`) when a named color and a hex code are the same length.
-- If `preferHex` is `false`, the plugin will use the named color (`red`) in those tie-breaker situations.
+- If `preferHex` is `true` (the default), the plugin will use hex notation (`#00f`) when a named color and a hex code are the same length.
+- If `preferHex` is `false`, the plugin will use the named color (`blue`) in those tie-breaker situations.
 
 This only affects cases where both forms are equally short. For example:
 
-| Input         | preferHex: true | preferHex: false |
+| Input Color   | preferHex: true | preferHex: false |
 |---------------|-----------------|------------------|
+| `red`         | `red` †         | `red`            |
 | `#f00`        | `#f00`          | `red`            |
-| `red`         | `#f00`          | `red`            |
-| `#ff0`        | `#ff0`          | `yellow`         |
-| `yellow`      | `#ff0`          | `yellow`         |
+| `blue`        | `#00f`          | `blue`           |
+| `#00f`        | `#00f`          | `blue`           |
+| `yellow`      | `#ff0`          | `#ff0`           |
+| `#ff0`        | `#ff0`          | `#ff0`           |
+| `aqua`        | `#0ff`          | `#0ff`           |
 | `#0ff`        | `#0ff`          | `aqua`           |
-| `aqua`        | `#0ff`          | `aqua`           |
+| `cyan`        | `#0ff`          | `aqua` ‡         |
+
+_† "red" is shorter (3 characters) than "#f00" (4 characters)_
+
+_‡ cyan and aqua are color synonmns, and aqua comes first alphabetically_
 
 ## Why Would I Change This?
 

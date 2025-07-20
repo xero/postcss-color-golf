@@ -235,7 +235,7 @@ You can tweak your preference with the `preferHex` option for tie-breakers.
 ## Why Culori?
 
 [Culori] is a modern, actively maintained color library that supports a huge range of color spaces and conversions, with a focus on correctness and standards compliance. By building on Culori, postcss-color-golf ensures your CSS color minification is always up-to-date with the latest color science and browser standards.
-```
+
 ---
 
 ## 🤝 Contributing

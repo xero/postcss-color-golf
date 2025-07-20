@@ -4,13 +4,13 @@
 
 ### Table of Contents
 
-- [Color Minification Logic](docs/color-minification-logic.md)
-- [API Reference](docs/api.md)
+- [Color Minification Logic](color-minification-logic.md)
+- [API Reference](api.md)
 - **Options**
-  - [The `preferHex` Option: Breaking Ties on the Green](docs/prefer-hex.md)
-  - [Color Space Skipping](docs/color-space-skipping.md)
-  - [Skip Rules](docs/skip-rules.md)
-- [Integration & Compatibility](docs/integrtion.md)
-- [Troubleshooting & FAQ](docs/troubleshooting.md)
-- [Contributing](docs/contributing.md)
-- [License](docs/license.md)
+  - [The `preferHex` Option: Breaking Ties on the Green](prefer-hex.md)
+  - [Color Space Skipping](color-space-skipping.md)
+  - [Skip Rules](skip-rules.md)
+- [Integration & Compatibility](integrtion.md)
+- [Troubleshooting & FAQ](troubleshooting.md)
+- [Contributing](contributing.md)
+- [License](license.md)

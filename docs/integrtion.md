@@ -1,4 +1,4 @@
-# Integration & Compatibility
+# Integration & Compatibility: _"Get into The Game!"_
 
 This guide explains how to integrate postcss-color-golf into your build process, which environments are supported, and how it works alongside other tools and dependencies.
 
