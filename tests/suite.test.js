@@ -1,7 +1,6 @@
 import {describe, it, expect} from "vitest";
 import postcss from "postcss";
 import postcssColorGolf from "../dist/index.mjs";
-
 describe("postcss-color-golf",()=>{
   it("minifies color values", async()=>{
     const input=`
@@ -16,7 +15,6 @@ describe("postcss-color-golf",()=>{
       f {box-shadow: inset 0 1px 2px rgba(0,0,0,.69), 0 -1px 1px #FFFFFF, 0 1px 0 #FFFFFF;}
     `;
     const result=await postcss([postcssColorGolf()]).process(input,{from: undefined});
-
     expect(result.css).toContain("--ts-color-black:#000");
     expect(result.css).toContain("color:red");
     expect(result.css).toContain("background:#f0f8ff");
@@ -28,7 +26,6 @@ describe("postcss-color-golf",()=>{
     expect(result.css).toContain("color:#0f0");  // From the direct #0f0 value
     expect(result.css).toContain("box-shadow: inset 0 1px 2px #000000b0");
  });
-
   it("converts rgb to named colors when shorter", async()=>{
     const input=`
       a {color: rgb(255, 0, 0);}
@@ -41,7 +38,6 @@ describe("postcss-color-golf",()=>{
       h {color: rgb(0, 0, 0);}
     `;
     const result=await postcss([postcssColorGolf({preferHex: true})]).process(input,{from: undefined});
-
     expect(result.css).toContain("color: red");
     expect(result.css).toContain("color: #0f0");
     expect(result.css).toContain("color: #00f");
@@ -51,7 +47,6 @@ describe("postcss-color-golf",()=>{
     expect(result.css).toContain("color: #fff");
     expect(result.css).toContain("color: #000");
  });
-
   it("converts rgba to hex with alpha", async()=>{
     const input=`
       a {color: rgba(255, 0, 0, 0.5);}
@@ -62,7 +57,6 @@ describe("postcss-color-golf",()=>{
       f {color: rgba(170, 187, 204, 0.8);}
     `;
     const result=await postcss([postcssColorGolf()]).process(input,{from: undefined});
-
     expect(result.css).toContain("color: #ff000080");
     expect(result.css).toContain("color: #00ff0040");
     expect(result.css).toContain("color: #0000ffbf"); // strict, not non-standard
@@ -70,7 +64,6 @@ describe("postcss-color-golf",()=>{
     expect(result.css).toContain("color: #000000e6");
     expect(result.css).toContain("color: #abcc");
  });
-
   it("shortens hex colors", async()=>{
     const input=`
       a {color: #ff0000;}
@@ -83,7 +76,6 @@ describe("postcss-color-golf",()=>{
       h {color: #ffaa00;}
     `;
     const result=await postcss([postcssColorGolf()]).process(input,{from: undefined});
-
     expect(result.css).toContain("color: red");
     expect(result.css).toContain("color: #0f0");
     expect(result.css).toContain("color: #00f");
@@ -93,7 +85,6 @@ describe("postcss-color-golf",()=>{
     expect(result.css).toContain("color: #123456");
     expect(result.css).toContain("color: #fa0");
  });
-
   it("converts named colors to hex when shorter", async()=>{
     const input=`
       a {color: aliceblue;}
@@ -105,7 +96,6 @@ describe("postcss-color-golf",()=>{
       g {color: transparent;}
     `;
     const result=await postcss([postcssColorGolf({preferHex: true})]).process(input,{from: undefined});
-
     expect(result.css).toContain("color: #f0f8ff");
     expect(result.css).toContain("color: #ffebcd");
     expect(result.css).toContain("color: #6495ed");
@@ -114,7 +104,6 @@ describe("postcss-color-golf",()=>{
     expect(result.css).toContain("color: #00f");
     expect(result.css).toContain("color: transparent");
  });
-
   it("handles 8-digit hex colors (with alpha)", async()=>{
     const input=`
       a {color: #ff000080;}
@@ -124,14 +113,12 @@ describe("postcss-color-golf",()=>{
       e {color: #aabbccdd;}
     `;
     const result=await postcss([postcssColorGolf()]).process(input,{from: undefined});
-
     expect(result.css).toContain("color: #ff000080");
     expect(result.css).toContain("color: #00ff0040");
     expect(result.css).toContain("color: #0000ffbf"); // strict, not non-standard
     expect(result.css).toContain("color: #ffffff1a");
     expect(result.css).toContain("color: #abcd");
  });
-
   it("handles edge cases", async()=>{
     const input=`
       a {color: rgb(255, 255, 255);}
@@ -142,7 +129,6 @@ describe("postcss-color-golf",()=>{
       f {color: rgba(255, 255, 255, 0);}
     `;
     const result=await postcss([postcssColorGolf()]).process(input,{from: undefined});
-
     expect(result.css).toContain("color: #fff");
     expect(result.css).toContain("color: #fff");
     expect(result.css).toContain("color: #fff");
@@ -150,7 +136,6 @@ describe("postcss-color-golf",()=>{
     expect(result.css).toContain("color: transparent");
     expect(result.css).toContain("color: transparent");
  });
-
   it("handles multiple colors in one declaration", async()=>{
     const input=`
       a {
@@ -160,12 +145,10 @@ describe("postcss-color-golf",()=>{
      }
     `;
     const result=await postcss([postcssColorGolf()]).process(input,{from: undefined});
-
     expect(result.css).toContain("red, #00f, #f0f8");
     expect(result.css).toContain("border: 1px solid #abc");
     expect(result.css).toContain("box-shadow: 0 0 10px #0000004d, inset 0 1px #fff");
  });
-
   it("preserves non-color values", async()=>{
     const input=`
       a {
@@ -178,7 +161,6 @@ describe("postcss-color-golf",()=>{
      }
     `;
     const result=await postcss([postcssColorGolf()]).process(input,{from: undefined});
-
     expect(result.css).toContain("width: 100px");
     expect(result.css).toContain("height: 50vh");
     expect(result.css).toContain("margin: 10px 20px");
@@ -186,7 +168,6 @@ describe("postcss-color-golf",()=>{
     expect(result.css).toContain('background-image: url("test.jpg")');
     expect(result.css).toContain("transform: rotate(45deg)");
  });
-
   it("handles case insensitive color names", async()=>{
     const input=`
       a {color: RED;}
@@ -195,13 +176,11 @@ describe("postcss-color-golf",()=>{
       d {color: AliceBlue;}
     `;
     const result=await postcss([postcssColorGolf({preferHex: true})]).process(input,{from: undefined});
-
     expect(result.css).toContain("color: red");
     expect(result.css).toContain("color: #00f");
     expect(result.css).toContain("color: green");
     expect(result.css).toContain("color: #f0f8ff");
  });
-
   it("handles whitespace variations", async()=>{
     const input=`
       a {color: rgb( 255 , 0 , 0 );}
@@ -210,13 +189,11 @@ describe("postcss-color-golf",()=>{
       d {color: rgba(0,0,0,.8);}
     `;
     const result=await postcss([postcssColorGolf()]).process(input,{from: undefined});
-
 		expect(result.css).toContain("color: red");
 		expect(result.css).toContain("color: #ffffff80");
 		expect(result.css).toContain("color:#0f0");
 		expect(result.css).toContain("color: #000c");
 	});
-
   it("minifies linear-gradient colors", async()=>{
     const input=`
       a {
@@ -226,12 +203,10 @@ describe("postcss-color-golf",()=>{
      }
     `;
     const result=await postcss([postcssColorGolf()]).process(input,{from: undefined});
-
     expect(result.css).toContain("red, #00f, #0f08");
     expect(result.css).toContain("red, #00f, #ff00ff80");
     expect(result.css).toContain("red, red, red");
  });
-
 	it("minifies rgba colors to the shortest valid CSS hex form", async()=>{
 		const input=`
 			a0 {color: rgba(0, 0, 0, 0.5);}
@@ -241,9 +216,7 @@ describe("postcss-color-golf",()=>{
 			a4 {color: rgba(0, 0, 255, 0.75);}
 			a5 {color: rgba(0, 0, 0, 0.9);}
 			`;
-
 		const result=await postcss([postcssColorGolf()]).process(input,{from: undefined});
-
 		expect(result.css).toContain(result.css, "a0 {color: #00000080;}");
 		expect(result.css).toContain(result.css, "a1 {color: #ff000080;}");
 		expect(result.css).toContain(result.css, "a2 {color: #00ff0040;}");
@@ -251,7 +224,6 @@ describe("postcss-color-golf",()=>{
 		expect(result.css).toContain(result.css, "a4 {color: #0000ffbf;}");
 		expect(result.css).toContain(result.css, "a5 {color: #000000e6;}");
 	});
-
 	it("minifies hsl colors to the shortest valid CSS form", async()=>{
 		const input = `
 			h1 {color: hsl(0, 0%, 0%);}
@@ -262,9 +234,7 @@ describe("postcss-color-golf",()=>{
 			h6 {color: hsl(39, 100%, 50%);}
 			h7 {color: hsl(300, 100%, 25%);}
 		`;
-
     const result=await postcss([postcssColorGolf({preferHex: false})]).process(input,{from: undefined});
-
 		expect(result.css).toContain("h1 {color: #000;}");
 		expect(result.css).toContain("h2 {color: red;}");
 		expect(result.css).toContain("h3 {color: lime;}");
@@ -273,7 +243,6 @@ describe("postcss-color-golf",()=>{
 		expect(result.css).toContain("h6 {color: #ffa600;}");// No named version
 		expect(result.css).toContain("h7 {color: purple;}");
 	});
-
 	it("minifies hsla colors to the shortest valid CSS form", async()=>{
 		const input = `
 			h1 {color: hsla(0, 0%, 0%, 0.5);}
@@ -284,9 +253,7 @@ describe("postcss-color-golf",()=>{
 			h6 {color: hsla(39, 100%, 50%, 0.9);}
 			h7 {color: hsla(300, 100%, 25%, 1);}
 		`;
-
 		const result = await postcss([postcssColorGolf()]).process(input, {from: undefined});
-
 		expect(result.css).toContain("h1 {color: #00000080;}");
 		expect(result.css).toContain("h2 {color: #ff000080;}");
 		expect(result.css).toContain("h3 {color: #00ff0040;}");
@@ -295,7 +262,6 @@ describe("postcss-color-golf",()=>{
 		expect(result.css).toContain("h6 {color: #ffa600e6;}");
 		expect(result.css).toContain("h7 {color: purple;}"); // Should convert to named color
 	});
-
 	it("handles hsl with different angle units correctly", async()=>{
 		const input = `
 			h1 {color: hsl(0deg, 100%, 50%);}
@@ -303,15 +269,12 @@ describe("postcss-color-golf",()=>{
 			h3 {color: hsl(3.14159rad, 100%, 50%);}
 			h4 {color: hsl(200grad, 100%, 50%);}
 		`;
-
     const result=await postcss([postcssColorGolf({preferHex: false})]).process(input,{from: undefined});
-
 		expect(result.css).toContain("h1 {color: red;}");
     expect(result.css).toMatch(/color: (aqua|cyan)/);
     expect(result.css).toMatch(/color: (aqua|cyan)/);
     expect(result.css).toMatch(/color: (aqua|cyan)/);
 	});
-
 	it("minifies lab colors to the shortest valid CSS form", async()=>{
 		const input = `
 			l1 {color: lab(0% 0 0);}
@@ -320,16 +283,13 @@ describe("postcss-color-golf",()=>{
 			l4 {color: lab(100% 0 0);}
 			l5 {color: lab(50% 0 0 / 0.5);}
 		`;
-
 		const result = await postcss([postcssColorGolf()]).process(input, {from: undefined});
-
 		expect(result.css).toContain("l1 {color: #000;}");
 		expect(result.css).toContain("l2 {color: #c14e79;}"); // approximate conversion
 		expect(result.css).toContain("l3 {color: #b2c200;}"); // approximate conversion
 		expect(result.css).toContain("l4 {color: #fff;}");
 		expect(result.css).toContain("l5 {color: #77777780;}"); // 50% L with alpha
 	});
-
 	it("minifies oklab colors to the shortest valid CSS form", async()=>{
 		const input = `
 			o1 {color: oklab(0 0 0);}
@@ -338,16 +298,13 @@ describe("postcss-color-golf",()=>{
 			o4 {color: oklab(1 0 0);}
 			o5 {color: oklab(0.5 0 0 / 0.5);}
 		`;
-
 		const result = await postcss([postcssColorGolf()]).process(input, {from: undefined});
-
 		expect(result.css).toContain("o1 {color: #000;}");
 		expect(result.css).toContain("o2 {color: #904961;}"); // approximate conversion
 		expect(result.css).toContain("o3 {color: #c5b100;}"); // approximate conversion
 		expect(result.css).toContain("o4 {color: #fff;}");
 		expect(result.css).toContain("o5 {color: #63636380;}"); // 0.5 L with alpha
 	});
-
 	it("handles linear-gradient with multiple color types", async()=>{
 		const input = `
 			.gradient1 {
@@ -360,15 +317,12 @@ describe("postcss-color-golf",()=>{
 				background: linear-gradient(to bottom, lab(75% 20 -40), oklab(0.8 0.1 -0.1), #aabbcc);
 			}
 		`;
-
     const result=await postcss([postcssColorGolf({preferHex: false})]).process(input,{from: undefined});
-
 		expect(result.css).toContain("background: linear-gradient(to right, red, lime, blue);");
 		expect(result.css).toContain("background: linear-gradient(45deg, #ff000080, #00ff00b3, #00fa);");
 		// The exact values for lab/oklab may vary, so we'll just check that they're converted to hex
 		expect(result.css).toMatch(/background: linear-gradient\(to bottom, #[a-f0-9]{3,6}, #[a-f0-9]{3,6}, #abc\);/);
 	});
-
 	it("handles radial-gradient and repeating gradients", async()=>{
 		const input = `
 			.radial {
@@ -381,14 +335,11 @@ describe("postcss-color-golf",()=>{
 				background: repeating-radial-gradient(circle at center, hsla(0, 100%, 50%, 0.5), rgba(0, 255, 0, 0.5) 20%, #0000ff80 30%);
 			}
 		`;
-
     const result=await postcss([postcssColorGolf({preferHex: false})]).process(input,{from: undefined});
-
 		expect(result.css).toContain("background: radial-gradient(circle, #f00c, green, blue);");
 		expect(result.css).toContain("background: repeating-linear-gradient(45deg, red, lime 20px, blue 40px);");
 		expect(result.css).toContain("background: repeating-radial-gradient(circle at center, #ff000080, #00ff0080 20%, #0000ff80 30%);");
 	});
-
 	it("handles conic-gradient and other CSS functions with colors", async()=>{
 		const input = `
 			.conic {
@@ -404,15 +355,12 @@ describe("postcss-color-golf",()=>{
 				filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
 			}
 		`;
-
     const result=await postcss([postcssColorGolf({preferHex: false})]).process(input,{from: undefined});
-
 		expect(result.css).toContain("background: conic-gradient(from 0deg, red, lime, blue);");
 		expect(result.css).toContain("background-image: cross-fade(red, #00ff0080, blue);");
 		expect(result.css).toContain("color: color-mix(in srgb, red, lime 50%);");
 		expect(result.css).toContain("filter: drop-shadow(2px 2px 5px #00000080);");
 	});
-
 	it("handles nested CSS functions with colors", async()=>{
 		const input = `
 			.nested {
@@ -431,20 +379,16 @@ describe("postcss-color-golf",()=>{
 				), url('image.jpg');
 			}
 		`;
-
     const result=await postcss([postcssColorGolf({preferHex: false})]).process(input,{from: undefined});
-
 		// Check that all colors are minimized
 		expect(result.css).toContain("red");
 		expect(result.css).toContain("lime");
 		expect(result.css).not.toContain("rgb(");
 		expect(result.css).not.toContain("hsl(");
 		expect(result.css).not.toContain("lab(");
-
 		// Check the complex case with transparent and image
 		expect(result.css).toContain("background: linear-gradient(to bottom, transparent, #000000b3), url('image.jpg');");
 	});
-
 	it("handles multiple CSS properties with color values", async()=>{
 		const input = `
 			.multi-color {
@@ -456,9 +400,7 @@ describe("postcss-color-golf",()=>{
 				text-shadow: 1px 1px 2px oklab(0.5 0 0 / 0.7);
 			}
 		`;
-
 		const result = await postcss([postcssColorGolf()]).process(input, {from: undefined});
-
 		expect(result.css).toContain("color: red;");
 		expect(result.css).toContain("background-color: #0f0;");
 		expect(result.css).toContain("border: 1px solid #0000ff80;");
@@ -466,7 +408,6 @@ describe("postcss-color-golf",()=>{
 		expect(result.css).toContain("inset 0 0 10px #c14e79");
 		expect(result.css).toContain("text-shadow: 1px 1px 2px #636363b3;");
 	});
-
 	it("keeps quotes intact and doesn't process colors inside them", async()=>{
 		const input = `
 			.quotes {
@@ -475,20 +416,15 @@ describe("postcss-color-golf",()=>{
 				background: linear-gradient(to right, red, green), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Crect fill='%23ff0000'/%3E%3C/svg%3E");
 			}
 		`;
-
 		const result = await postcss([postcssColorGolf()]).process(input, {from: undefined});
-
 		// Colors inside quotes should not be processed
 		expect(result.css).toContain('content: "rgb(255, 0, 0) is #ff0000"');
 		expect(result.css).toContain("font-family: 'Helvetica, #fff, Arial'");
-
 		// Colors outside quotes should be processed
 		expect(result.css).toContain("linear-gradient(to right, red, green)");
-
 		// URLs with encoded SVG should be preserved
 		expect(result.css).toContain('url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect fill=\'%23ff0000\'/%3E%3C/svg%3E")');
 	});
-
   it("respects preferHex tiebreaker: true (hex preferred for tie)", async()=>{
     const input=`
       a {color: lime;}
@@ -502,7 +438,6 @@ describe("postcss-color-golf",()=>{
       i {color: dimgrey;}
     `;
     const result=await postcss([postcssColorGolf({preferHex: true})]).process(input,{from: undefined});
-
     expect(result.css).toContain("color: #0f0");
     expect(result.css).toContain("color: #0ff");
     expect(result.css).toContain("color: #00f");
@@ -513,7 +448,6 @@ describe("postcss-color-golf",()=>{
     expect(result.css).toContain("color: #696969");
     expect(result.css).toContain("color: #696969");
   });
-
   it("respects preferHex tiebreaker: false (name preferred for tie)", async()=>{
     const input=`
       a {color: #0f0;}
@@ -526,7 +460,6 @@ describe("postcss-color-golf",()=>{
       h {color: #8b0000;}
     `;
     const result=await postcss([postcssColorGolf({preferHex: false})]).process(input,{from: undefined});
-
     expect(result.css).toContain("color: lime");
     expect(result.css).toMatch(/color: (aqua|cyan)/);
     expect(result.css).toContain("color: blue");
@@ -536,7 +469,6 @@ describe("postcss-color-golf",()=>{
     expect(result.css).toMatch(/color: dimgr[ae]y/);
     expect(result.css).toContain("color: darkred");
   });
-
   it("minifies to 4 bits when valid", async()=>{
     const input=`
     a { color: #ffccffaa; }
@@ -545,7 +477,6 @@ describe("postcss-color-golf",()=>{
     d { color: #1234567a; }
     `;
     const result=await postcss([postcssColorGolf({preferHex: false})]).process(input,{from: undefined});
-
     expect(result.css).toContain("color: #fcfa");
     expect(result.css).toContain("color: #abcd");
     expect(result.css).toContain("color: #1234");

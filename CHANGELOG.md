@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [4.0.0] 2025-07-17
+## [4.0.0] 2025-07-20
 ### Changed
 - Total rewrite using Culori as the color backed 🎨
 ## [3.0.0] 2025-07-17
