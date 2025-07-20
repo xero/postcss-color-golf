@@ -24,6 +24,8 @@
   Works with PostCSS v8+, ESM, CJS, and TypeScript. Plays nice with your whole plugin bag.
 - **Flexible play:**
   Customizable if you want to tweak your strategy (see options).
+- **Powered by Culori:**
+  All color parsing, conversion, and formatting is handled by Culori, supporting all modern and legacy color spaces.
 
 ---
 
@@ -45,6 +47,10 @@
   - Knows when to use `transparent`—no need for a lost ball search.
 - **No color stuck in the rough:**
   - Ignores comments and strings, only minifies what’s in play.
+- **Don't handycap yourself:**
+  - You can opt out of minifying colors from spaces that require approximation (like lab, oklab, display-p3, etc.), ensuring your colors never shift unexpectedly.
+- **Culori is your color caddy:**
+  - All color math, parsing, and conversions are handled by Culori. This ensures robust, standards-based support for new and legacy color spaces (lab, lch, oklab, display-p3, rec2020, and more).
 
 ---
 
@@ -126,7 +132,8 @@ postcssColorGolf([options])
 | Option      | Type    | Default | Description                                                                                  |
 |-------------|---------|---------|----------------------------------------------------------------------------------------------|
 | preferHex   | boolean | true    | Prefer hex over named color when output is the same length.                                  |
-| smallest    | boolean | true    | (Ignored for now, always outputs spec-compliant shortest CSS. No non-standard pseudo-short.) |
+| ignoreApproximatedSpaces | boolean | false | If true, skips minifying colors from spaces that may be approximated (lab, oklab, etc).    |
+| ignoredSpaces | string[] | [] | List of color space names to skip minifying (e.g. `["lab", "oklab"]`).                       |
 
 ---
 
@@ -145,6 +152,8 @@ postcss-color-golf takes every color value and putts it through a rigorous “go
    Uses 8-digit hex (`#rrggbbaa`) or `transparent` if that's the best play.
 5. **Never goes out-of-bounds:**
    Won’t use non-standard pseudo-shorts—every output is a legal move per the CSS spec.
+6. **Culori is our caddy:**
+   All parsing, conversion, and color space support is handled by [Culori], meaning you will always get the latest and greatest in color science... in the least number of stokes!
 
 ---
 
@@ -176,6 +185,25 @@ a {
 
 ---
 
+## 📓 Documentation
+
+We maintain detailed documentation in the `/docs` directory.
+
+### Table of Contents
+
+- [Color Minification Logic](docs/color-minification-logic.md)
+- [API Reference](docs/api.md)
+- **Options**
+  - [The `preferHex` Option: Breaking Ties on the Green](docs/prefer-hex.md)
+  - [Color Space Skipping](docs/color-space-skipping.md)
+  - [Skip Rules](docs/skip-rules.md)
+- [Integration & Compatibility](docs/integrtion.md)
+- [Troubleshooting & FAQ](docs/troubleshooting.md)
+- [Contributing](docs/contributing.md)
+- [License](docs/license.md)
+
+---
+
 ## 🚧 Limitations
 
 - Won’t optimize colors in comments or string values—your gallery is safe.
@@ -204,6 +232,10 @@ Absolutely!
 If a name is shorter, it’s in the hole. If hex is shorter, it’s getting teed up.
 You can tweak your preference with the `preferHex` option for tie-breakers.
 
+## Why Culori?
+
+[Culori] is a modern, actively maintained color library that supports a huge range of color spaces and conversions, with a focus on correctness and standards compliance. By building on Culori, postcss-color-golf ensures your CSS color minification is always up-to-date with the latest color science and browser standards.
+```
 ---
 
 ## 🤝 Contributing
@@ -237,3 +269,4 @@ Use it for anything, commercial or personal, with or without attribution.
 (You don’t even have to yell “fore!”)
 
 [PostCSS]: https://github.com/postcss/postcss
+[Culori]: https://github.com/Evercoder/culori

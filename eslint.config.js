@@ -14,7 +14,15 @@ files:['src/**/*.ts'],
 languageOptions:{parser:tseslint.parser}},{
 // xero style!
 rules:{
-// no space before function parens for anonymous,always for named
+// use your stuff
+"no-unused-vars": "error",
+"@typescript-eslint/no-unused-vars": "error",
+// short circuits are golftastic!
+"no-unused-expressions": "off",
+"@typescript-eslint/no-unused-expressions": "off",
+// this is typescript, type stuff!
+"@typescript-eslint/no-inferrable-types": "off",
+// no space before function parens
 'space-before-function-paren':[
 'error',{anonymous:'never',named:'never',asyncArrow:'never'}],
 // no spaces inside brackets/braces/parens
