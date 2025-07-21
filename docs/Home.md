@@ -8,7 +8,7 @@
 - [API Reference](api.md)
 - **Options**
   - [Do you `preferHex`?](prefer-hex.md) _"Breaking Ties on the Green"_
-  - [Color Space Skipping](color-space-skipping.md)
+  - [Color Space Skipping](color-space-skipping.md) _"Bouncing Over Color Hazards"_
   - [Skip Rules](skip-rules.md) _"A Pure RegEx Lay-up!"_
 - [Integration & Compatibility](integrtion.md) _"Get into The Game!"_
 - [Troubleshooting & FAQ](troubleshooting.md)
@@ -17,7 +17,7 @@
 
 ---
 
-> #### Note: the following is a mirror of the project README
+> #### Note: the following is a mirror of [the project README](https://github.com/xero/postcss-color-golf/blob/main/README.md)
 
 ---
 

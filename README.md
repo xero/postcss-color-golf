@@ -195,7 +195,7 @@ We maintain detailed documentation in the `/docs` directory.
 - [API Reference](docs/api.md)
 - **Options**
   - [Do you `preferHex`?](docs/prefer-hex.md) _"Breaking Ties on the Green"_
-  - [Color Space Skipping](docs/color-space-skipping.md)
+  - [Color Space Skipping](docs/color-space-skipping.md) _"Bouncing Over Color Hazards"_
   - [Skip Rules](docs/skip-rules.md) _"A Pure RegEx Lay-up!"_
 - [Integration & Compatibility](docs/integrtion.md) _"Get into The Game!"_
 - [Troubleshooting & FAQ](docs/troubleshooting.md)
