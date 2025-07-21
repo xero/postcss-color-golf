@@ -7,7 +7,7 @@
 - [Color Minification Logic](color-minification-logic.md)
 - [API Reference](api.md)
 - **Options**
-  - [`preferHex`](prefer-hex.md) _"Breaking Ties on the Green"_
+  - [Do you `preferHex`?](prefer-hex.md) _"Breaking Ties on the Green"_
   - [Color Space Skipping](color-space-skipping.md)
   - [Skip Rules](skip-rules.md) _"A Pure RegEx Lay-up!"_
 - [Integration & Compatibility](integrtion.md) _"Get into The Game!"_
@@ -17,7 +17,9 @@
 
 ---
 
-> note: the following is a mirror of the project readme.
+> #### Note: the following is a mirror of the project README
+
+---
 
 # postcss-color-golf [<img src="https://postcss.github.io/postcss/logo.svg" alt="PostCSS Logo" width="90" height="90" align="right">][PostCSS]
 
