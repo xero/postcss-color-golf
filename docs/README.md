@@ -7,10 +7,10 @@
 - [Color Minification Logic](color-minification-logic.md)
 - [API Reference](api.md)
 - **Options**
-  - [The `preferHex` Option: Breaking Ties on the Green](prefer-hex.md)
+  - [`preferHex`](prefer-hex.md) _"Breaking Ties on the Green"_
   - [Color Space Skipping](color-space-skipping.md)
-  - [Skip Rules](skip-rules.md)
-- [Integration & Compatibility](integrtion.md)
+  - [Skip Rules](skip-rules.md) _"A Pure RegEx Lay-up!"_
+- [Integration & Compatibility](integrtion.md) _"Get into The Game!"_
 - [Troubleshooting & FAQ](troubleshooting.md)
 - [Contributing](contributing.md)
 - [License](license.md)

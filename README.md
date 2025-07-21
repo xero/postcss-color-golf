@@ -194,10 +194,10 @@ We maintain detailed documentation in the `/docs` directory.
 - [Color Minification Logic](docs/color-minification-logic.md)
 - [API Reference](docs/api.md)
 - **Options**
-  - [The `preferHex` Option: Breaking Ties on the Green](docs/prefer-hex.md)
+  - [`preferHex`](docs/prefer-hex.md) _"Breaking Ties on the Green"_
   - [Color Space Skipping](docs/color-space-skipping.md)
-  - [Skip Rules](docs/skip-rules.md)
-- [Integration & Compatibility](docs/integrtion.md)
+  - [Skip Rules](docs/skip-rules.md) _"A Pure RegEx Lay-up!"_
+- [Integration & Compatibility](docs/integrtion.md) _"Get into The Game!"_
 - [Troubleshooting & FAQ](docs/troubleshooting.md)
 - [Contributing](docs/contributing.md)
 - [License](docs/license.md)

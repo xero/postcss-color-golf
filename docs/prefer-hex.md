@@ -1,7 +1,5 @@
 # ⛳️ PostCSS Color Golf Documentation
 
----
-
 ## The `preferHex` Option: _"Breaking Ties on the Green"_
 
 When postcss-color-golf minifies a color, it always chooses the shortest legal CSS representation—whether that's a named color (like `red`) or a hex code (like `#f00`).

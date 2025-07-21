@@ -1,7 +1,5 @@
 # ⛳️ PostCSS Color Golf Documentation
 
-----
-
 ## Color Minification Logic: _it's a triple eagle!_
 
 ### Understanding Color Spaces and Notations

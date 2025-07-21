@@ -1,7 +1,5 @@
 # ⛳️ PostCSS Color Golf Documentation
 
----
-
 ## Color Space Skipping Options: _"Bouncing Over Color Hazards"_
 
 postcss-color-golf gives you fine-grained control over which color spaces are minified. This is especially useful when working with advanced or wide-gamut color spaces that may be **approximated** when converted to standard CSS formats (like sRGB hex or named colors).

@@ -1,7 +1,5 @@
 # ⛳️ PostCSS Color Golf Documentation
 
----
-
 ## Contributing to postcss-color-golf
 
 We welcome contributions of all kinds—bug reports, feature requests, code, and documentation!

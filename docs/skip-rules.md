@@ -1,7 +1,5 @@
 # ⛳️ PostCSS Color Golf Documentation
 
----
-
 ## Skip Rules: _"A Pure RegEx Lay-up!"_
 
 You can skip processing for certain CSS properties, selectors, or at-rules with the `skip` option.

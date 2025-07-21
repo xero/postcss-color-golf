@@ -1,7 +1,5 @@
 # ⛳️ PostCSS Color Golf Documentation
 
----
-
 ## Troubleshooting & FAQ
 
 This guide covers common issues, debugging tips, and answers to frequently asked questions about using postcss-color-golf.

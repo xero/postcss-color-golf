@@ -1,8 +1,5 @@
 # ⛳️ PostCSS Color Golf Documentation
 
----
-
-**License:** CC0 1.0 Universal / Public Domain / KOPIMI ⟁
 # API Reference: postcss-color-golf
 
 This document describes all configuration options, usage patterns, and integration details for the postcss-color-golf plugin.
