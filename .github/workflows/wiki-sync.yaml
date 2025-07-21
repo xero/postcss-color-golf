@@ -1,0 +1,21 @@
+name: Sync Docs to Wiki
+
+on:
+  push:
+    paths:
+      - '.github/actions/**'
+  workflow_dispatch:
+
+jobs:
+  sync-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Sync .github/actions to Wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@v4
+        with:
+          path: .github/actions
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
