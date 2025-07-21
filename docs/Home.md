@@ -10,7 +10,7 @@
   - [Do you `preferHex`?](prefer-hex.md) _"Breaking Ties on the Green"_
   - [Color Space Skipping](color-space-skipping.md) _"Bouncing Over Color Hazards"_
   - [Skip Rules](skip-rules.md) _"A Pure RegEx Lay-up!"_
-- [Integration & Compatibility](integrtion.md) _"Get into The Game!"_
+- [Integration & Compatibility](integration.md) _"Get into The Game!"_
 - [Troubleshooting & FAQ](troubleshooting.md)
 - [Contributing](contributing.md)
 - [License](license.md)
@@ -220,7 +220,7 @@ We maintain detailed documentation in the `/docs` directory.
   - [The `preferHex` Option: Breaking Ties on the Green](prefer-hex.md)
   - [Color Space Skipping](color-space-skipping.md)
   - [Skip Rules](skip-rules.md)
-- [Integration & Compatibility](integrtion.md)
+- [Integration & Compatibility](integration.md)
 - [Troubleshooting & FAQ](troubleshooting.md)
 - [Contributing](contributing.md)
 - [License](license.md)
