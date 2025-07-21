@@ -1,9 +1,11 @@
-name: Sync Docs to Wiki
+name: Sync docs to Wiki
 
 on:
   push:
+    branches:
+      - main
     paths:
-      - '.github/actions/**'
+      - 'docs/**'
   workflow_dispatch:
 
 jobs:
@@ -13,9 +15,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Sync .github/actions to Wiki
+      - name: Sync docs to Wiki
         uses: Andrew-Chen-Wang/github-wiki-action@v4
         with:
-          path: .github/actions
+          path: docs
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
